@@ -1,4 +1,4 @@
-// Tengo que importar el ROuterModule para poder usar las rutas
+// Tengo que importar el RouterModule para poder usar las rutas
 // (Además del Routes)
 import { RouterModule, Routes } from '@angular/router';
 
