@@ -8,9 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class Graficas1Component implements OnInit {
 
    // Default variables
-   public DoughnutChartLabels: string[] = ['Download Sales', 'In-Store Sales', 'Mail-Order Sales'];
-   public DoughnutChartData: number[] = [350, 450, 100] ;
-   public DoughnutChartType: string = 'doughnut';
+   public doughnutChartLabels: string[] = ['Download Sales', 'In-Store Sales', 'Mail-Order Sales'];
+   public doughnutChartData: number[] = [350, 450, 100] ;
+   public doughnutChartType: string = 'doughnut';
 
   graficos: any = {
     'grafico1': {

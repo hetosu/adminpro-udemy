@@ -4,13 +4,17 @@ Author: Wrappixel
 Email: niravjoshi87@gmail.com
 File: js
 */
+
+function init_plugins() {
+
+
 $(function() {
     "use strict";
     $(function() {
         $(".preloader").fadeOut();
     });
     jQuery(document).on('click', '.mega-dropdown', function(e) {
-        e.stopPropagation()
+        e.stopPropagation();
     });
     // ============================================================== 
     // This is for the top header part and sidebar part
@@ -100,14 +104,14 @@ $(function() {
     //tooltip
     // ============================================================== 
     $(function() {
-        $('[data-toggle="tooltip"]').tooltip()
-    })
+        $('[data-toggle="tooltip"]').tooltip();
+    });
     // ============================================================== 
     //Popover
     // ============================================================== 
     $(function() {
-        $('[data-toggle="popover"]').popover()
-    })
+        $('[data-toggle="popover"]').popover();
+    });
     // ============================================================== 
     // Sidebarmenu
     // ============================================================== 
@@ -155,3 +159,5 @@ $(function() {
     });
 
 });
+
+}
