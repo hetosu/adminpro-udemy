@@ -27,9 +27,9 @@ export class AccountSettingsComponent implements OnInit {
   }
 
   aplicarCheck( link: ElementRef<any>) {
-    const selectores = document.getElementsByClassName('selector');
+    const selectors = document.getElementsByClassName('selector');
 
-    for ( const ref of selectores ) {
+    for ( const ref of selectors ) {
       ref.classList.remove('working');
     }
 
@@ -40,7 +40,7 @@ export class AccountSettingsComponent implements OnInit {
     const selectors = document.getElementsByClassName('selector');
     const tema = this._AJUSTES.ajustes.tema;
 
-    for ( const ref of selectores ) {
+    for ( const ref of selectors ) {
       if ( ref.getAttribute('data-theme') === tema) {
         ref.classList.add('working');
         break;
