@@ -7,7 +7,10 @@ import {APP_ROUTES} from './app.routes';
 // Módulos
 import {PagesModule} from './pages/pages.module';
 
-// Services
+// temporal
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+// Servicios
 import { ServiceModule } from './services/service.module';
 
 // Componentes
@@ -16,7 +19,6 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './login/register.component';
 
 // TODO: Temporal
-import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,9 +28,10 @@ import { FormsModule } from '@angular/forms';
     ],
   imports: [
     BrowserModule,
-    PagesModule,
     APP_ROUTES,
+    PagesModule,
     FormsModule,
+    ReactiveFormsModule,
     ServiceModule
   ],
   providers: [],

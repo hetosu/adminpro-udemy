@@ -26,7 +26,7 @@ export class AccountSettingsComponent implements OnInit {
 
   }
 
-  aplicarCheck( link: ElementRef<any>) {
+  aplicarCheck( link: any) {
     const selectors = document.getElementsByClassName('selector');
 
     for ( const ref of selectors ) {

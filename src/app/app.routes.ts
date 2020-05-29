@@ -1,3 +1,4 @@
+// ARCHIVO DE RUTAS PRINCIPALES
 // Tengo que importar el RouterModule para poder usar las rutas
 // (Además del Routes)
 import { RouterModule, Routes } from '@angular/router';
