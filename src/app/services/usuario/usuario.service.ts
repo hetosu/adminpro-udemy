@@ -7,6 +7,7 @@ import { Router} from '@angular/router';
 // lo que necesitamos, en este caso el operador "map"
 import { map } from 'rxjs/operators';
 import Swal from 'sweetalert2';
+import { SubirArchivoService } from '../subir-archivo/subir-archivo.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,8 @@ export class UsuarioService {
 
   constructor(
     public http: HttpClient,
-    public router: Router ) {
+    public router: Router,
+    public _subirArchivoService: SubirArchivoService ) {
       this.cargarStorage();
     }
 
@@ -42,7 +44,7 @@ export class UsuarioService {
     localStorage.setItem('token', token);
     localStorage.setItem('usuario', JSON.stringify(usuario));
 
-    // Varaibles de la clase para guardo el usuario y token que recibo en las variables
+    // Variables de la clase para guardar el usuario y token que recibo en las variables
     this.usuario = usuario;
     this.token = token;
   }
@@ -104,6 +106,34 @@ export class UsuarioService {
       );
   }
 
+  actualizarUsuario(usuario: Usuario) {
+    let url = URL_SERVICIOS + '/usuario/' + usuario._id + '?token=' + this.token;
+    return this.http.put(url, usuario)
+      .pipe(
+        map((resp: any) => {
 
+          let usuarioDB: Usuario = resp.usuario;
+          this.guardarStorage(usuarioDB._id, this.token, usuarioDB);
+          Swal.fire({ title: 'Usuario actualizado correctamente!',
+                      text: 'Usuario: ' + usuario.nombre + '\n Email: ' + usuario.email,
+                      icon: 'success' });
+          return true;
+      })
+    );
+  }
+
+  cambiarImagen( archivo: File, id: string ) {
+    this._subirArchivoService.subirArchivo(archivo, 'usuarios', id)
+      .then( (resp: any) => {
+        this.usuario.img = resp.usuario.img;
+        Swal.fire({ title: 'Imagen actualizada correctamente!',
+                     text: 'Usuario: ' + this.usuario.nombre,
+                     icon: 'success' });
+        this.guardarStorage( id, this.token, this.usuario);
+      })
+      .catch( resp => {
+        console.log(resp);
+      })
+  }
 
 }

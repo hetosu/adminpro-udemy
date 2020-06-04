@@ -11,6 +11,7 @@ import { LoginComponent } from '../login/login.component';
 
 // Esto es para proteger las páginas
 import { LoginGuardGuard } from '../services/guards/login-guard.guard';
+import { ProfileComponent } from './profile/profile.component';
 
 const pagesRoutes: Routes = [
     {
@@ -24,6 +25,7 @@ const pagesRoutes: Routes = [
             {path: 'promesas', component: PromesasComponent, data: { titulo: 'Promesas'} },
             {path: 'rxjs', component: RxjsComponent, data: { titulo: 'RxJs'} },
             {path: 'account-settings', component: AccountSettingsComponent, data: { titulo: 'Ajustes del tema'} },
+            {path: 'perfil', component: ProfileComponent, data: { titulo: 'Perfil de Usuario'} },
             {path: '', redirectTo: '/dashboard', pathMatch: 'full'}
         ]
     },

@@ -56,41 +56,17 @@ export class LoginComponent implements OnInit {
       let token = googleUser.getAuthResponse().id_token;
 
       // Cuando tenemos el token de Google, llamamos a la autenticación
-      // de backend con el token para que lo verifique.
-      this._usuarioService.loginGoogle( token )
-        .subscribe( ackCorrecto => this.router.navigate(['/dashboard']));
-        // Arriba se podría hacer una redirección manual que sería:
-        // windows.location.href = '·/dashboard'
+      // de backend con el token para que lo verifique y redireccionamos
+      this._usuarioService.loginGoogle( token )
+        .subscribe( () => window.location.href = '#/dashboard' ); 
     });
   }
-  // onSuccess(googleUser) {
-  //   console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
-  // }
-  // onFailure(error) {
-  //   console.log(error);
-  // }
-  // renderButton() {
-  //   gapi.signin2.render('my-signin2', {
-  //     scope: 'profile email',
-  //     width: 240,
-  //     height: 50,
-  //     longtitle: true,
-  //     theme: 'dark',
-  //     onsuccess: this.onSuccess,
-  //     onfailure: this.onFailure
-  //   });
-  // }
 
-  //  onSingIn(googleUser) {
-  //    let profile =  googleUser.getBAsicProfile();
-  //    console.log('token: ', profile.getEmail());
-  // }
+  ingresar( forma: NgForm ) {
 
-  ingresar( forma: NgForm) {
-
-    // Aunque cuando llegamos aquí el formulario es válid, esto se
+    // Aunque cuando llegamos aquí el formulario es "valid", esto se
     // denomina "formula de sanidad".
-    // Si el formulario no es válido que se salga. Esto se llama
+    // Si el formulario no es válido que se salga.
     if ( forma.invalid ) {
       return;
     }
@@ -98,7 +74,7 @@ export class LoginComponent implements OnInit {
     let usuario = new Usuario(null, forma.value.email, forma.value.password);
 
     this._usuarioService.login( usuario, forma.value.recuerdame )
-      .subscribe( ackCorrecto => this.router.navigate(['/dashboard']));
+      .subscribe( () => this.router.navigate(['/dashboard']));
 
   }
 }
