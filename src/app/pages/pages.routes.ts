@@ -7,11 +7,12 @@ import { Graficas1Component } from './graficas1/graficas1.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
-import { LoginComponent } from '../login/login.component';
+
+import { ProfileComponent } from './profile/profile.component';
 
 // Esto es para proteger las páginas
 import { LoginGuardGuard } from '../services/guards/login-guard.guard';
-import { ProfileComponent } from './profile/profile.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
 
 const pagesRoutes: Routes = [
     {
@@ -19,6 +20,7 @@ const pagesRoutes: Routes = [
         component: PagesComponent,
         canActivate: [ LoginGuardGuard ],
         children: [
+            // Generales
             {path: 'dashboard', component: DashboardComponent, data: { titulo: 'Dashboard'} },
             {path: 'progress', component: ProgressComponent, data: { titulo: 'Progress'} },
             {path: 'graficas1', component: Graficas1Component, data: { titulo: 'Gráficas'} },
@@ -26,6 +28,9 @@ const pagesRoutes: Routes = [
             {path: 'rxjs', component: RxjsComponent, data: { titulo: 'RxJs'} },
             {path: 'account-settings', component: AccountSettingsComponent, data: { titulo: 'Ajustes del tema'} },
             {path: 'perfil', component: ProfileComponent, data: { titulo: 'Perfil de Usuario'} },
+
+            // Mantenimientos
+            {path: 'usuarios', component: UsuariosComponent, data: { titulo: 'Mantenimiento de Usuarios'} },
             {path: '', redirectTo: '/dashboard', pathMatch: 'full'}
         ]
     },
